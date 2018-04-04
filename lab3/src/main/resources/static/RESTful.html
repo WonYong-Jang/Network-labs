@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XMLHttpRequest</title>
+    <meta charset="utf-8">
+    <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#get').click(function () {
+                $.ajax({
+                    url: '/member',
+                    type: 'get',
+                    dataType: 'text',
+                    success: function (data) {
+                        $('#output').val(data);
+                    },
+                error:function(request,status,error){
+                	$('#output').val("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                }
+                });
+            });
+			
+            // 개별 고객 검색
+            $('#get2').click(function () {
+            	var id = $("#id").val();
+				$.ajax({
+					url:'/searchMember',
+					type:'get',
+					dataType:'json',
+					data:{"id": id},
+					success: function (data) {
+                        $('#id').val(data.id);
+                        $('#name').val(data.name);
+                        $('#weight').val(data.weight);
+                        $('#rrid').val(data.rrid);
+                        $('#gender').val(data.gender);
+                        $('#output').val("success in search record(id="+$('#id').val() + ")");
+                    },
+                	error:function(request,status,error){
+                		$('#output').val("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                		$('#name').val('');
+                        $('#weight').val('');
+                        $('#rrid').val('');
+                        $('#gender').val('');
+                	}
+				});
+            });
+            
+        	 // 로그인 고객 검색
+            $('#get5').click(function () {
+                $.ajax({
+                    url: '/searchLogin',
+                    type: 'get',
+                    dataType: 'text',
+                    success: function (data) {
+                        $('#output').val(data);
+                    },
+                error:function(request,status,error){
+                	$('#output').val("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                }
+                });
+            });
+
+            // 신규고객 추가
+            $('#post').click(function () {
+            	$.ajax({
+            		url:'/addMember',
+            		type:'post',
+            		headers: { 
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json' 
+                    },
+                    dataType: 'text',
+            		data: JSON.stringify({
+                        name: $('#name').val(),
+                        weight: $('#weight').val(),
+                        rrid: $('#rrid').val()
+                    }),
+                    success: function (data) {
+                    	$('#output').val("success in Add record(name="+$("#name").val() + ")");
+                    },
+                	error:function(request,status,error){
+                		$('#output').val("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                		if(request.status == 406) {
+                            obj = JSON.parse(request.responseText);
+                            if(obj.name == "#error") $('#name').val($('#name').val() + " <-- (error)");
+                            if(obj.weight == -1.0) $('#weight').val($('#weight').val() + " <-- (error)");
+                            if(obj.rrid == "#error") $('#rrid').val($('#rrid').val() + " <-- (error)");
+                            $('#gender').val('');                    		
+                    	}
+                	}
+            	});
+            });
+			
+            //고객 정보 변경
+            $('#put').click(function () {
+                $.ajax({
+                    url: '/member/' + $('#id').val(),
+                    type: 'put',
+                    headers: { 
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json' 
+                    },
+                    dataType: 'text',
+                    data: JSON.stringify({
+                    	id: $('#id').val(),
+                        name: $('#name').val(),
+                        weight: $('#weight').val(),
+                        rrid: $('#rrid').val()
+                    }),
+                    success: function (data) {
+                        obj = JSON.parse(data);
+                        $('#id').val(obj.id);
+                        $('#name').val(obj.name);
+                        $('#weight').val(obj.weight);
+                        $('#rrid').val(obj.rrid);
+                        $('#gender').val(obj.gender);
+                        $('#output').val("success in updating record(id="+$('#id').val() + ")");
+                    },
+                    error:function(request,status,error){
+                    	$('#output').val("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    	if(request.status == 406) 
+                    	{
+                            obj = JSON.parse(request.responseText);
+                            if(obj.name == "#error") $('#name').val($('#name').val() + " <-- (error)");
+                            if(obj.weight == -1.0) $('#weight').val($('#weight').val() + " <-- (error)");
+                            if(obj.rrid == "#error") $('#rrid').val($('#rrid').val() + " <-- (error)");
+                            $('#gender').val('');                    		
+                    	}
+                    }
+                    });
+            });
+			
+          //로그인 정보 변경
+            $('#put5').click(function () {
+                $.ajax({
+                    url: '/login/' + $('#loginId').val(),
+                    type: 'put',
+                    headers: { 
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json' 
+                    },
+                    dataType: 'text',
+                    data: JSON.stringify({
+                    	loginId: $('#loginId').val(),
+                        account: $('#account').val(),
+                        password: $('#password').val(),
+                        email: $('#email').val(),
+                        level: $('#level').val()
+                    }),
+                    success: function (data) {
+                        obj = JSON.parse(data);
+                       
+                        $('#output').val("success in updating Login record(id="+$('#id').val() + ")");
+                    },
+                    error:function(request,status,error){
+                    	$('#output').val("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    	
+                    }
+                    });
+            });
+            
+            
+            // 고객 명단 삭제
+            $('#delete').click(function () {
+				
+            	$.ajax({
+            		url:'/delMember/' + $('#id').val(),
+            		type:'delete',
+            		dataType: 'json',
+            		
+            		data: JSON.stringify({
+                    	id: $('#id').val(),
+                    }),
+                    success: function (data) {
+                    	$('#output').val("success in Delete record(id="+$('#id').val() + ")");
+                    	$('#name').val('');
+                        $('#weight').val('');
+                        $('#rrid').val('');
+                        $('#gender').val('');
+                    },
+                	error:function(request,status,error){
+                		$('#output').val("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                	}
+            	});
+              
+            });
+        });
+    </script>
+    
+</head>
+<body>
+    <button id="get">고객리스트(검색)</button>
+    <button id="get2">개별고객(검색)</button>
+    <button id="post">신규고객(추가)</button>
+    <button id="put">고객업데이트(변경)</button>
+    <button id="delete">고객탈퇴(삭제)</button>
+    
+    <h1>고객정보입력</h1>
+    
+            <table>
+                <tr>
+                    <td><label for="id">ID: </label></td>
+                    <td><input id="id" type="text" /></td>
+                </tr>
+                <tr>
+                    <td><label for="name">이름:</label></td>
+                    <td><input id="name" /></td>
+                </tr>
+                <tr>
+                    <td><label for="weight">몸무게:</label></td>
+                    <td><input id="weight" /></td>
+                </tr>
+                <tr>
+                    <td><label for="rrid">주민등록번호:</label></td>
+                    <td><input id="rrid" /></td>
+                </tr>
+                <tr>
+                    <td><label for="gender">성별:</label></td>
+                    <td><input id="gender" style="background-color:#dddddd;" readonly /></td>
+                </tr>
+            </table>
+
+    <h1>고객정보확인</h1>
+    
+    
+    
+    <h1>로그인</h1>
+    <button id="get5">로그인(검색)</button>
+    <button id="put5">로그인(변경)</button>
+ 
+            <table>
+            	<tr>
+                    <td><label for="loginId">ID: </label></td>
+                    <td><input id="loginId" type="text" /></td>
+                </tr>
+                <tr>
+                    <td><label for="account">account: </label></td>
+                    <td><input id="account" type="text" /></td>
+                </tr>
+                <tr>
+                    <td><label for="password">비밀번호:</label></td>
+                    <td><input id="password" /></td>
+                </tr>
+                <tr>
+                    <td><label for="email">이메일:</label></td>
+                    <td><input id="email" /></td>
+                </tr>
+                <tr>
+                    <td><label for="level">level:</label></td>
+                    <td><input id="level" /></td>
+                </tr>
+            </table>
+
+    <h1>로그인</h1>
+    
+    <textarea id="output" disabled="disabled" cols="80" rows="20"></textarea>
+</body>
+</html>

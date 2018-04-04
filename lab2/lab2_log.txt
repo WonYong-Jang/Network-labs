@@ -1,0 +1,86 @@
+20:23:56.357 [main] INFO com.cclab.web.client.HTTP_Client_Solution - hello
+hello
+file.encoding = UTF-8
+
+=================================================
+1. test for HTTP GET default(index.html) home page
+=================================================
+
+(Request)
+GET /index.html HTTP/1.1
+
+(Reply)
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Sat, 10 Mar 2018 06:44:29 GMT
+ETag: W/"169-1620ea752ce"
+Content-Type: text/html; charset=UTF-8
+Content-Length: 361
+Date: Sat, 17 Mar 2018 11:23:56 GMT
+Connection: keep-alive
+
+bytes=361(361) ﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+  <title>Hello World</title>
+  <!--.......-->
+</head>
+<body>
+  <script>
+  alert('Hello World...!');
+  </script>
+
+  2018년 컴퓨터 네트워크 실습1 - HTTP 프로토콜 분석 <br>
+  - static page <br>
+  - redirection <br>
+
+  <script src="hello.js">  </script>
+
+</body>
+</html>
+
+
+======================================
+2. test for HTTP GET hello.js home page
+======================================
+
+(Request)
+GET /hello.js HTTP/1.1
+
+(Reply)
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Sat, 10 Mar 2018 06:44:29 GMT
+ETag: W/"6c-1620ea752cb"
+Content-Type: application/javascript
+Content-Length: 108
+Date: Sat, 17 Mar 2018 11:23:56 GMT
+Connection: keep-alive
+
+bytes=108(108) ﻿console.log('Hello World! \n 이름: \"홍길동\" \n 소속: 컴퓨터공학부 \n 학번: 20163333');
+
+
+======================================
+3. test for HTTP GET hong.html home page
+======================================
+
+(Request)
+GET /hong.html HTTP/1.1
+
+(Reply)
+HTTP/1.1 302 Found
+X-Powered-By: Express
+Location: http://naver.com
+Vary: Accept
+Content-Type: text/plain; charset=utf-8
+Content-Length: 38
+Date: Sat, 17 Mar 2018 11:23:56 GMT
+Connection: keep-alive
+
+bytes=38(38) Found. Redirecting to http://naver.com
