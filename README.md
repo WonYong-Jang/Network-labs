@@ -1,7 +1,7 @@
 # Network-labs
 
 ### Lab1 - HTTP 프로토콜 : 클라이언트(Chrome브라우저), 서버-(node.js&javascript)
- - lab1.js 완성하기
+ - lab1.js 완성하기 (node.js express 플러그인 추가(npm install express) / 실행 명령 : node lab1.js)
 ```
 // 모듈을 추출합니다.
 const express = require('express');
