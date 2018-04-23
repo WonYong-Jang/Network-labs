@@ -28,7 +28,7 @@ app.listen(8080, ()=> {
 
 ### Lab2 - HTTP 프로토콜 : Spring-boot, 서버-(node.js&javascript)
  - HTTP_Client.java 완성하기 (프로그램 실행시 "lab2_log.txt" 처럼 출력되도록 구현)
- - 소스코드 일부
+ - 소스코드 일부와 결과사진
  ```
  try { // 소켓라이브러리
 			String host;
