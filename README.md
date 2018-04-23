@@ -2,7 +2,7 @@
 
 ### Lab1 - HTTP 프로토콜 : 클라이언트(Chrome브라우저), 서버-(node.js&javascript)
  - lab1.js 완성하기
-'''
+```
 // 모듈을 추출합니다.
 const express = require('express');
 // 서버를 생성합니다.
@@ -24,4 +24,4 @@ app.get('*',(request,response)=> {
 app.listen(8080, ()=> {
     console.log('Server running at http://192.168.33.197:8080');
 });
-'''
+```
