@@ -98,8 +98,13 @@ app.listen(8080, ()=> {
 ```
 ![123](https://user-images.githubusercontent.com/26623547/39110125-d776aaa8-470a-11e8-828a-e7558ca5b85c.JPG)
 
-### Lab3 - Restful : Spring-boot, 서버-(node.js&javascript)
+### Lab3 - Restful : Spring-boot, 서버-(node.js&javascript) / 고객관리 시스템 구현
  - 서버측 : HTTP_ServerController.java
  - 클라이언트측 : RESTful.html
  - 다음 주소를 브라우저에 입력 ( http://(서버주소):8080/RESTful.html )
  - 기능 : 고객리스트(검색) , 고객업데이트(변경), 신규고객(추가), 고객탈퇴(삭제), 로그인정보 검색, 변경기능 
+ 
+### Lab4 - Restful : Spring-boot, 서버-(node.js&javascript) / 투표상황 발생데이터 실시간으로 보여주는 시스템 구현
+ - 투표상황을 실시간으로 보여주는 서비스 : ( http://(서버주소):8080/PollRTV.html )
+ - 투표상황 발생데이터를 입력 : ( http://(서버주소):8080/PollUpdate.html )
+ - 기능 : 5초에 한번씩 실시간 투표상황을 주기적으로 갱신
