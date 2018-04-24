@@ -109,6 +109,6 @@ app.listen(8080, ()=> {
  - 투표상황 발생데이터를 입력 : ( http://(서버주소):8080/PollUpdate.html )
  - 기능 : 5초에 한번씩 실시간 투표상황을 주기적으로 갱신
  - 결과 화면
- ![default](https://user-images.githubusercontent.com/26623547/39162988-67820a36-47b3-11e8-9d95-e792882b5f2e.JPG)
  
- ![pollrtv](https://user-images.githubusercontent.com/26623547/39163010-78770116-47b3-11e8-8dd1-2068a445a4b3.JPG)
+![default](https://user-images.githubusercontent.com/26623547/39163155-30da771a-47b4-11e8-9875-112ff26e69a2.jpg)
+![pollrtv](https://user-images.githubusercontent.com/26623547/39163157-3217d6ae-47b4-11e8-8542-d80d14dbf13d.jpg)
