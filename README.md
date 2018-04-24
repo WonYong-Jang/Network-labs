@@ -104,7 +104,11 @@ app.listen(8080, ()=> {
  - 다음 주소를 브라우저에 입력 ( http://(서버주소):8080/RESTful.html )
  - 기능 : 고객리스트(검색) , 고객업데이트(변경), 신규고객(추가), 고객탈퇴(삭제), 로그인정보 검색, 변경기능 
  
-### Lab4 - Restful : Spring-boot, 서버-(node.js&javascript) / 투표상황 발생데이터 실시간으로 보여주는 시스템 구현
+### Lab4 - Restful : Spring-boot, javascript / 투표상황 발생데이터 실시간으로 보여주는 시스템 구현
  - 투표상황을 실시간으로 보여주는 서비스 : ( http://(서버주소):8080/PollRTV.html )
  - 투표상황 발생데이터를 입력 : ( http://(서버주소):8080/PollUpdate.html )
  - 기능 : 5초에 한번씩 실시간 투표상황을 주기적으로 갱신
+ - 결과 화면
+ ![default](https://user-images.githubusercontent.com/26623547/39162988-67820a36-47b3-11e8-9d95-e792882b5f2e.JPG)
+ 
+ ![pollrtv](https://user-images.githubusercontent.com/26623547/39163010-78770116-47b3-11e8-8dd1-2068a445a4b3.JPG)
