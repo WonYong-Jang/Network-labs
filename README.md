@@ -115,3 +115,14 @@ app.listen(8080, ()=> {
  
 ![default](https://user-images.githubusercontent.com/26623547/39163155-30da771a-47b4-11e8-9875-112ff26e69a2.jpg)
 ![pollrtv](https://user-images.githubusercontent.com/26623547/39163157-3217d6ae-47b4-11e8-8542-d80d14dbf13d.jpg)
+
+### Lab 5
+ ** SMTP **
+ - SMTP 프로토콜은 Simple Mail Transfer Protocol의 약어로 인터넷상에서 이메일을 전송하기 위해서 사용되는 통신 규약 중에 하나
+ - 이메일을 송수신하는 서버를 SMTP 서버
+ - SMPT 서버를 구축하기 위해서는 물리적인 서버를 구축하여 서버를 설치하고 네트워크 환경을 잡아줘야 하지만 네이버와 구글에서 계정에 대한 SMTP를 제공 
+ - 메일을 연동하기 위해선 우선 해당 메일에 접속해서 POP3/IMAP 설정을 해주어야 한다.
+ - POP3과 IMAP 은 통신 규약 중 하나로 가장 큰 차이점은 동기화
+ - POP3 : 새로운 메일을 가져올 때 이외에는 서버상과 그 어떤 통신도 하지 않는다. 즉, 로컬(Mail앱)에 있는 메일을 삭제하여도
+서버 (Naver)상의 메이리은 그대로 남아있는다. 
+ - IMAP은 서버와 지속적으로 통신하며 동기화함. 즉, 로컬에서 이루어지는 일련의 작업이 서버에 영향을 미친다.
