@@ -1,6 +1,6 @@
 # Network-labs
 
-### Lab1 - HTTP 프로토콜 : 클라이언트(Chrome브라우저), 서버-(node.js&javascript)
+## Lab1 - HTTP 프로토콜 : 클라이언트(Chrome브라우저), 서버-(node.js&javascript)
  - lab1.js 완성하기 (node.js express 플러그인 추가(npm install express) / 실행 명령 : node lab1.js)
 ```
 // 모듈을 추출합니다.
@@ -26,7 +26,7 @@ app.listen(8080, ()=> {
 });
 ```
 
-### Lab2 - HTTP 프로토콜 : Spring-boot, 서버-(node.js&javascript)
+## Lab2 - HTTP 프로토콜 : Spring-boot, 서버-(node.js&javascript)
  - HTTP_Client.java 완성하기 (프로그램 실행시 "lab2_log.txt" 처럼 출력되도록 구현)
  - 소스코드 일부와 결과사진
  ```
@@ -98,7 +98,7 @@ app.listen(8080, ()=> {
 ```
 ![123](https://user-images.githubusercontent.com/26623547/39110125-d776aaa8-470a-11e8-828a-e7558ca5b85c.JPG)
 
-### Lab3 - Restful : Spring-boot, javascript / 고객관리 시스템 구현
+## Lab3 - Restful : Spring-boot, javascript / 고객관리 시스템 구현
  - 서버측 : HTTP_ServerController.java
  - 클라이언트측 : RESTful.html
  - 다음 주소를 브라우저에 입력 ( http://(서버주소):8080/RESTful.html )
@@ -107,7 +107,7 @@ app.listen(8080, ()=> {
  
  ![1234](https://user-images.githubusercontent.com/26623547/39163335-001afcb6-47b5-11e8-8735-c41004b8fa12.jpg)
  
-### Lab4 - Restful : Spring-boot, javascript / 투표상황 발생데이터 실시간으로 보여주는 시스템 구현
+## Lab4 - Restful : Spring-boot, javascript / 투표상황 발생데이터 실시간으로 보여주는 시스템 구현
  - 투표상황을 실시간으로 보여주는 서비스 : ( http://(서버주소):8080/PollRTV.html )
  - 투표상황 발생데이터를 입력 : ( http://(서버주소):8080/PollUpdate.html )
  - 기능 : 5초에 한번씩 실시간 투표상황을 주기적으로 갱신
@@ -116,7 +116,7 @@ app.listen(8080, ()=> {
 ![default](https://user-images.githubusercontent.com/26623547/39163155-30da771a-47b4-11e8-9875-112ff26e69a2.jpg)
 ![pollrtv](https://user-images.githubusercontent.com/26623547/39163157-3217d6ae-47b4-11e8-8542-d80d14dbf13d.jpg)
 
-### Lab 5
+## Lab 5
  ** SMTP **
  - SMTP 프로토콜은 Simple Mail Transfer Protocol의 약어로 인터넷상에서 이메일을 전송하기 위해서 사용되는 통신 규약 중에 하나
  - 이메일을 송수신하는 서버를 SMTP 서버
