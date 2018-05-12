@@ -96,7 +96,7 @@ app.listen(8080, ()=> {
 				}
 			}
 ```
-<img src="https://user-images.githubusercontent.com/26623547/39110125-d776aaa8-470a-11e8-828a-e7558ca5b85c.JPG" width="300" height="300">
+<img src="https://user-images.githubusercontent.com/26623547/39110125-d776aaa8-470a-11e8-828a-e7558ca5b85c.JPG" width="500" height="400">
 
 
 ## Lab3 - Restful : Spring-boot, javascript / 고객관리 시스템 구현
