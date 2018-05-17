@@ -1,4 +1,4 @@
-# Network-labs
+#Network-labs
 
 ## Lab1 - HTTP 프로토콜 : 클라이언트(Chrome브라우저), 서버-(node.js&javascript)
  - lab1.js 완성하기 (node.js express 플러그인 추가(npm install express) / 실행 명령 : node lab1.js)
@@ -129,7 +129,7 @@ app.listen(8080, ()=> {
  - IMAP은 서버와 지속적으로 통신하며 동기화함. 즉, 로컬에서 이루어지는 일련의 작업이 서버에 영향을 미친다.
 ==> SMTP 프로토콜을 이용하여 java 프로그램 작성 후 이메일 보내기
 
-## lab 6
+## lab 6 - SSH 프로토콜기반 LifeCycle서비스
 1) 현재 LifeCycle프로그램(lab6-ssh)에서 웹서버프로그램(lab6-website)이 자체수집한 "페이지접속횟수"를 읽어오는 코드가 빠져있다.
    2초에 한번씩 읽어와 콘솔창에 출력하는 코드를 작성
 2) 접속횟수가 4회 이상인 경우 최대 3개까지 클론프로세스(lab3-0.0.1-SNAPSHOT.jar)를 원격 실행하는 코드를 작성하라.
@@ -139,3 +139,4 @@ app.listen(8080, ()=> {
    LifeCycle프로그램(lab6-ssh)에서는 측정지표(VisitCount2)를 읽어와 사용하도록 구현
 - 참고 : 제공되는 LifeCycle프로그램은 SSH-exec기능을 구현한 자바라이브러리 (Jsch라이브러리,http://www.leafcats.com/177)를 적용하여          MyThread run()메소드 안에 구현하고 있다.
 
+## lab 7 - Chatting on Spring-Boot & STOMP-WebSocket
