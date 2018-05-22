@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+      <title>Spring Boot WebSocket Chat Application</title>
+      <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+      <link rel="stylesheet" href="/css/main.css?ver=1.111" />
+  </head>
+  <body>
+    <noscript>
+      <h2>Sorry! Your browser doesn't support Javascript</h2>
+    </noscript>
+
+    <div id="username-page">
+        <div class="username-page-container">
+            <h1 class="title">Type your username</h1>
+            <form id="usernameForm" name="usernameForm">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="accent username-submit">Start Chatting</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Chatting List -->
+	<div id="chatList-page" class="hidden">
+		<div class="chat-container">
+    		<div class ="chat-header">
+    			<h2>Chat Room List</h2>
+    		</div>
+    		<br>
+    		<table>
+    			<thead>
+    				<tr><th>Chat Room List</th></tr>
+    			</thead>
+    			<tbody id="roomList">
+    				
+    			</tbody>
+    		</table>
+    		<div id="notRooms">
+    			<p>There are not created rooms ( Create room after inputing room name )</p>
+    		</div>
+    		<form id="chatListForm" name="chatListForm" nameForm="chatListForm">
+                <div class="form-group">
+                    <div class="">
+                        <input type="text" id="createRoomName" placeholder="Please input room name to create" autocomplete="off" class="form-control"/>
+                        <button type="button" id="addCreateBtn" class="primary">Create Room</button>
+                    </div>
+                </div>
+            </form>
+            <form id="joinForm" name="joinForm" nameForm="joinForm">
+                <div class="form-group">
+                    <div class="input-group clearfix">
+                        <input type="text" id="joinRoom" placeholder="Please input room name to join" autocomplete="off" class="form-control"/>
+                        <button type="submit" class="primary">Join Room</button>
+                    </div>
+                </div>
+            </form>
+    	</div>
+	</div>
+	
+	<!-- chatting Room  -->
+    <div id="chat-page" class="hidden">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2 id="chattingName">Spring WebSocket Chat Demo</h2>
+            </div>
+            <div class="connecting">
+                Connecting...
+            </div>
+            <ul id="messageArea">
+
+            </ul>
+            <form id="messageForm" name="messageForm" nameForm="messageForm">
+                <div class="form-group">
+                    <div class="input-group clearfix">
+                        <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
+                        <button type="submit" class="primary">Send</button>
+                        <button type="button" onclick="outChating();" class="primary">Out</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+	
+	<!-- 소켓 라이브러리 선언 !!!! low level에서  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <!-- high level에서는 stomp 라이브러리 가져옴    -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="/js/main.js?ver=2.1225510251"></script>
+  </body>
+</html>
