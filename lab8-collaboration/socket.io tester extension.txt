@@ -1,0 +1,21 @@
+---------------------------------
+socket.io 기반 메시지 교환 모니터링
+---------------------------------
+
+(1) socket.io는 기본적으로 임의의 topic에 가입하면 해당 토픽에 가입한 모든
+    subscriber간에 메시지 브로드캐스팅이 일어난다.
+
+(2) socket.io topic별로 전송되는 메시지를 모니터링해주는 도구(앱)로 구글확장프로그램인
+    "Socket.io tester"가 있다. 다음 사이트에서 설치하면 구글크롬 확장프로그램으로
+    등록되며 크롬창에서 확장앱 아이콘을 클릭하여 들어가 "Socket.io tester"을 실행한 후
+    사용URL과 topic(event, whiteboard의 경우 'line')을 입력하면 전송메시지를 실시간으로
+    관찰할 수 있다.
+
+https://chrome.google.com/webstore/detail/socketio-tester/cgmimdpepcncnjgclhnhghdooepibakm?hl=ko
+
+(3) 또다른 프로그램으로 "Socket.io Devtool(alpha)"가 다음 사이트에 있으며 이 앱은
+    크롬브라우저의 개발자창(F12-키로 오픈)의 확장메뉴로 활성화하였을 때 "Socket.io"라는
+    이름으로 추가메뉴가 뜨게 되며 크롬에서 실행되는 페이지가 연결하는 모든 "Socket.io"
+    메시지를 모니터링할 수 있다.
+
+https://chrome.google.com/webstore/detail/socketio-devtoolalpha/pohgadllhbmnojaedmmnnacpefgaldge

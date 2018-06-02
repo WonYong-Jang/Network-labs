@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+    <script src="jquery-3.1.0.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 변수를 선언합니다.
+            var color = 'black';
+            var width = 1;
+            var isDown = false;
+            var newPoint, oldPoint;
+            // 소켓을 연결합니다.
+            var socket = io.connect();
+            // 캔버스를 추출합니다.
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d'); // 2차원으로 그림을 그리는 환경의 변수 context
+            // 마우스 이벤트를 연결합니다.
+            $(canvas).mousedown(function (event) { // 마우스 다운 이벤트 확보
+                isDown = true; // 마우스 눌려지는 순간 true
+                oldPoint = {
+                    x: event.pageX - $(this).position().left,
+                    y: event.pageY - $(this).position().top
+                };
+            });
+            $(canvas).mousemove(function (event) { // 마우스 이동 하는 좌표 읽어서 상대편에 보냄
+                if (!isDown) { return; } // event는 순간순간 동적인 이벤트(좌표값을 가지고 있음)
+                newPoint = {
+                    x: event.pageX - $(this).position().left, // 원점좌표 기준으로 해서 현재 position
+                    y: event.pageY - $(this).position().top // x, y 원점으로부터 몇픽셀 떨어져있는지
+                };
+		// java 에서 send 로 바꿔서 보냄!!!!!!!!!!!!!!!! line 이 아니고 draw 겠지 
+                socket.emit('line', { // socket 하나 열고 상대방에게 보냄 (graphic line을 그릴때쓰임) 
+                    // socket을통해서 서버로 보내고 서버는 연결되있는 곳에 다 broadcasting
+                    x1: oldPoint.x,  // x, y1 출발점
+                    y1: oldPoint.y,
+                    x2: newPoint.x,  // 새로운 좌표값, 마우스 이동하고 끝나는 좌표값
+                    y2: newPoint.y,
+                    color: color, // 색은 검은색으로 default
+                    width: width // 선의 굵기
+                });
+                oldPoint = newPoint;
+            });
+            $(canvas).mouseup(function (event) {
+                isDown = false; // 마우스 땠을때는 마우스 이동하더라도 그리지마라 
+                oldPoint = {
+                    x: event.pageX - $(this).position().left,
+                    y: event.pageY - $(this).position().top
+                };
+            });
+            // 입력 양식 이벤트를 연결합니다.
+            $('#pen').click(function () {
+                width = 1;
+                color = 'black';
+                $('#width').val(width);
+            });
+            $('#eraser').click(function () {
+                width = 10;
+                color = 'white';
+                $('#width').val(width);
+            });
+            $('#width').change(function () {
+                width = $(this).val()
+            });
+            // 소켓 이벤트를 연결합니다.
+            socket.on('line', function (data) { // 소켓에 도착했을때 메시지 타입 line 이 도착, 
+                context.beginPath(); // 그래픽하게 시작
+                                context.lineWidth = data.width;
+                context.strokeStyle = data.color;
+                alert(data.x1+" "+data.y1+" "+data.x2+" "+data.y2);
+                context.moveTo(data.x1, data.y1); // 이동
+                context.lineTo(data.x2, data.y2); // 그려라
+                context.stroke(); // 끝 
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="pen">펜</button>
+    <button id="eraser">지우개</button>
+    <input id="width" type="range" min="1" max="10" value="1" />
+    <br />
+    <canvas id="canvas" width="1000" height="600"></canvas>
+</body>
+</html>
