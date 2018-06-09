@@ -140,3 +140,7 @@ app.listen(8080, ()=> {
 - 참고 : 제공되는 LifeCycle프로그램은 SSH-exec기능을 구현한 자바라이브러리 (Jsch라이브러리,http://www.leafcats.com/177)를 적용하여          MyThread run()메소드 안에 구현하고 있다.
 
 ## lab 7 - Chatting on Spring-Boot & STOMP-WebSocket
+==> 기존 존재하는 오픈소스 채팅프로그램을 이용하여 다수의 채팅방을 생성할 수 있는 기능을 추가하고, 각 채팅방의 메시지를 공유 및 외부에 노출이 되지 않도록 구현한다.
+
+## lab 8 - Collaboration on Spring-boot & STOMP-WebSocket
+==> 채팅프로그램 구현과 그림판을 동시에 사용할수 있는 프로그램 구현
